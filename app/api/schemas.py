@@ -2,7 +2,7 @@
 from decimal import ROUND_HALF_UP, Decimal
 from enum import Enum
 from fractions import Fraction
-from typing import Optional
+from typing import Literal, Optional
 
 from pydantic import BaseModel
 
@@ -14,6 +14,10 @@ class Availability(str, Enum):
     two_weeks = "two_weeks"
     not_looking = "not_looking"
     unknown = "unknown"
+
+
+AvailabilityValue = Literal["immediate", "two_weeks", "not_looking", "unknown"]
+CultureStatus = Literal["scored", "unknown_candidate_traits", "no_job_keywords"]
 
 
 def round_to(value, places: int) -> float:
@@ -49,7 +53,7 @@ class ExperienceComponentOut(BaseModel):
 
 
 class CultureComponentOut(BaseModel):
-    status: str
+    status: CultureStatus
     score: Optional[float]
     weight_applied: float
     matched: list[str]
@@ -97,7 +101,7 @@ class CandidateSummaryOut(BaseModel):
     id: int
     name: str
     experience_years: float
-    availability: str            # "unknown" when NULL in the DB
+    availability: AvailabilityValue   # "unknown" when NULL in the DB
     quirk: Optional[str]
 
 
@@ -155,7 +159,7 @@ def _base(rank: int, r: MatchResult) -> dict:
 class JobFiltersOut(BaseModel):
     min_score: float
     min_skill_coverage: float
-    availability: Optional[list[str]]
+    availability: Optional[list[AvailabilityValue]]
 
 
 class CandidateFiltersOut(BaseModel):
@@ -199,7 +203,7 @@ class JobListResponse(BaseModel):
 
 
 class CandidateListFiltersOut(BaseModel):
-    availability: Optional[list[str]]
+    availability: Optional[list[AvailabilityValue]]
 
 
 class CandidateListResponse(BaseModel):
@@ -219,8 +223,8 @@ def candidate_list_response(candidates, filters: CandidateListFiltersOut) -> Can
 
 
 class HealthResponse(BaseModel):
-    status: str      # "ok" | "degraded"
-    database: str    # "ok" | "unavailable"
+    status: Literal["ok", "degraded"]
+    database: Literal["ok", "unavailable"]
 
 
 class ErrorBody(BaseModel):

@@ -1,0 +1,687 @@
+{
+  "job": {
+    "id": 1,
+    "title": "Backend Detective",
+    "min_experience_years": 3.0,
+    "required_skills": [
+      "deduction",
+      "forensics",
+      "pattern-recognition"
+    ],
+    "culture_keywords": [
+      "analytical",
+      "autonomous"
+    ],
+    "tagline": "We have a bug. We have no leads. We have you."
+  },
+  "filters_applied": {
+    "min_score": 0.0,
+    "min_skill_coverage": 0.0,
+    "availability": null
+  },
+  "total": 15,
+  "matches": [
+    {
+      "rank": 1,
+      "candidate": {
+        "id": 1,
+        "name": "Sherlock H.",
+        "experience_years": 8.0,
+        "availability": "immediate",
+        "quirk": "Solves problems by eliminating the impossible; occasionally insufferable in standups."
+      },
+      "score": 92.5,
+      "skill_coverage": 100.0,
+      "matched_required_skill_count": 3,
+      "required_skill_count": 3,
+      "components": {
+        "skills": {
+          "score": 100.0,
+          "weight_applied": 0.6,
+          "matched": [
+            "deduction",
+            "forensics",
+            "pattern-recognition"
+          ],
+          "missing": []
+        },
+        "experience": {
+          "score": 100.0,
+          "weight_applied": 0.25,
+          "candidate_years": 8.0,
+          "required_years": 3.0,
+          "meets_minimum": true
+        },
+        "culture": {
+          "status": "scored",
+          "score": 50.0,
+          "weight_applied": 0.15,
+          "matched": [
+            "analytical"
+          ],
+          "missing": [
+            "autonomous"
+          ]
+        }
+      },
+      "explanation": "Has all 3 required skills; 8 yrs meets the 3-yr minimum; matches 1 of 2 culture keywords (analytical)."
+    },
+    {
+      "rank": 2,
+      "candidate": {
+        "id": 9,
+        "name": "Sheldon C.",
+        "experience_years": 9.0,
+        "availability": "immediate",
+        "quirk": "Correct 95% of the time, insufferable 100% of the time."
+      },
+      "score": 45.0,
+      "skill_coverage": 33.33,
+      "matched_required_skill_count": 1,
+      "required_skill_count": 3,
+      "components": {
+        "skills": {
+          "score": 33.33,
+          "weight_applied": 0.6,
+          "matched": [
+            "pattern-recognition"
+          ],
+          "missing": [
+            "deduction",
+            "forensics"
+          ]
+        },
+        "experience": {
+          "score": 100.0,
+          "weight_applied": 0.25,
+          "candidate_years": 9.0,
+          "required_years": 3.0,
+          "meets_minimum": true
+        },
+        "culture": {
+          "status": "scored",
+          "score": 0.0,
+          "weight_applied": 0.15,
+          "matched": [],
+          "missing": [
+            "analytical",
+            "autonomous"
+          ]
+        }
+      },
+      "explanation": "Has 1 of 3 required skills (pattern-recognition; missing deduction, forensics); 9 yrs meets the 3-yr minimum; matches none of the 2 culture keywords."
+    },
+    {
+      "rank": 3,
+      "candidate": {
+        "id": 4,
+        "name": "Leslie K.",
+        "experience_years": 6.0,
+        "availability": "immediate",
+        "quirk": "Has a binder for everything, including the binder."
+      },
+      "score": 25.0,
+      "skill_coverage": 0.0,
+      "matched_required_skill_count": 0,
+      "required_skill_count": 3,
+      "components": {
+        "skills": {
+          "score": 0.0,
+          "weight_applied": 0.6,
+          "matched": [],
+          "missing": [
+            "deduction",
+            "forensics",
+            "pattern-recognition"
+          ]
+        },
+        "experience": {
+          "score": 100.0,
+          "weight_applied": 0.25,
+          "candidate_years": 6.0,
+          "required_years": 3.0,
+          "meets_minimum": true
+        },
+        "culture": {
+          "status": "scored",
+          "score": 0.0,
+          "weight_applied": 0.15,
+          "matched": [],
+          "missing": [
+            "analytical",
+            "autonomous"
+          ]
+        }
+      },
+      "explanation": "Has none of the 3 required skills (missing deduction, forensics, pattern-recognition); 6 yrs meets the 3-yr minimum; matches none of the 2 culture keywords."
+    },
+    {
+      "rank": 4,
+      "candidate": {
+        "id": 6,
+        "name": "Rick S.",
+        "experience_years": 20.0,
+        "availability": "immediate",
+        "quirk": "Solution works, mechanism deeply concerning."
+      },
+      "score": 25.0,
+      "skill_coverage": 0.0,
+      "matched_required_skill_count": 0,
+      "required_skill_count": 3,
+      "components": {
+        "skills": {
+          "score": 0.0,
+          "weight_applied": 0.6,
+          "matched": [],
+          "missing": [
+            "deduction",
+            "forensics",
+            "pattern-recognition"
+          ]
+        },
+        "experience": {
+          "score": 100.0,
+          "weight_applied": 0.25,
+          "candidate_years": 20.0,
+          "required_years": 3.0,
+          "meets_minimum": true
+        },
+        "culture": {
+          "status": "scored",
+          "score": 0.0,
+          "weight_applied": 0.15,
+          "matched": [],
+          "missing": [
+            "analytical",
+            "autonomous"
+          ]
+        }
+      },
+      "explanation": "Has none of the 3 required skills (missing deduction, forensics, pattern-recognition); 20 yrs meets the 3-yr minimum; matches none of the 2 culture keywords."
+    },
+    {
+      "rank": 5,
+      "candidate": {
+        "id": 7,
+        "name": "Elle W.",
+        "experience_years": 3.0,
+        "availability": "immediate",
+        "quirk": "Underestimated in every standup, correct in every retro."
+      },
+      "score": 25.0,
+      "skill_coverage": 0.0,
+      "matched_required_skill_count": 0,
+      "required_skill_count": 3,
+      "components": {
+        "skills": {
+          "score": 0.0,
+          "weight_applied": 0.6,
+          "matched": [],
+          "missing": [
+            "deduction",
+            "forensics",
+            "pattern-recognition"
+          ]
+        },
+        "experience": {
+          "score": 100.0,
+          "weight_applied": 0.25,
+          "candidate_years": 3.0,
+          "required_years": 3.0,
+          "meets_minimum": true
+        },
+        "culture": {
+          "status": "scored",
+          "score": 0.0,
+          "weight_applied": 0.15,
+          "matched": [],
+          "missing": [
+            "analytical",
+            "autonomous"
+          ]
+        }
+      },
+      "explanation": "Has none of the 3 required skills (missing deduction, forensics, pattern-recognition); 3 yrs meets the 3-yr minimum; matches none of the 2 culture keywords."
+    },
+    {
+      "rank": 6,
+      "candidate": {
+        "id": 10,
+        "name": "Katniss E.",
+        "experience_years": 5.0,
+        "availability": "immediate",
+        "quirk": "Excellent under pressure, terrible with public speaking."
+      },
+      "score": 25.0,
+      "skill_coverage": 0.0,
+      "matched_required_skill_count": 0,
+      "required_skill_count": 3,
+      "components": {
+        "skills": {
+          "score": 0.0,
+          "weight_applied": 0.6,
+          "matched": [],
+          "missing": [
+            "deduction",
+            "forensics",
+            "pattern-recognition"
+          ]
+        },
+        "experience": {
+          "score": 100.0,
+          "weight_applied": 0.25,
+          "candidate_years": 5.0,
+          "required_years": 3.0,
+          "meets_minimum": true
+        },
+        "culture": {
+          "status": "scored",
+          "score": 0.0,
+          "weight_applied": 0.15,
+          "matched": [],
+          "missing": [
+            "analytical",
+            "autonomous"
+          ]
+        }
+      },
+      "explanation": "Has none of the 3 required skills (missing deduction, forensics, pattern-recognition); 5 yrs meets the 3-yr minimum; matches none of the 2 culture keywords."
+    },
+    {
+      "rank": 7,
+      "candidate": {
+        "id": 13,
+        "name": "Ted L.",
+        "experience_years": 7.0,
+        "availability": "immediate",
+        "quirk": "Turns every technical setback into a folksy metaphor."
+      },
+      "score": 25.0,
+      "skill_coverage": 0.0,
+      "matched_required_skill_count": 0,
+      "required_skill_count": 3,
+      "components": {
+        "skills": {
+          "score": 0.0,
+          "weight_applied": 0.6,
+          "matched": [],
+          "missing": [
+            "deduction",
+            "forensics",
+            "pattern-recognition"
+          ]
+        },
+        "experience": {
+          "score": 100.0,
+          "weight_applied": 0.25,
+          "candidate_years": 7.0,
+          "required_years": 3.0,
+          "meets_minimum": true
+        },
+        "culture": {
+          "status": "scored",
+          "score": 0.0,
+          "weight_applied": 0.15,
+          "matched": [],
+          "missing": [
+            "analytical",
+            "autonomous"
+          ]
+        }
+      },
+      "explanation": "Has none of the 3 required skills (missing deduction, forensics, pattern-recognition); 7 yrs meets the 3-yr minimum; matches none of the 2 culture keywords."
+    },
+    {
+      "rank": 8,
+      "candidate": {
+        "id": 15,
+        "name": "Dwight S.",
+        "experience_years": 9.0,
+        "availability": "immediate",
+        "quirk": "Assistant to the regional backend engineer."
+      },
+      "score": 25.0,
+      "skill_coverage": 0.0,
+      "matched_required_skill_count": 0,
+      "required_skill_count": 3,
+      "components": {
+        "skills": {
+          "score": 0.0,
+          "weight_applied": 0.6,
+          "matched": [],
+          "missing": [
+            "deduction",
+            "forensics",
+            "pattern-recognition"
+          ]
+        },
+        "experience": {
+          "score": 100.0,
+          "weight_applied": 0.25,
+          "candidate_years": 9.0,
+          "required_years": 3.0,
+          "meets_minimum": true
+        },
+        "culture": {
+          "status": "scored",
+          "score": 0.0,
+          "weight_applied": 0.15,
+          "matched": [],
+          "missing": [
+            "analytical",
+            "autonomous"
+          ]
+        }
+      },
+      "explanation": "Has none of the 3 required skills (missing deduction, forensics, pattern-recognition); 9 yrs meets the 3-yr minimum; matches none of the 2 culture keywords."
+    },
+    {
+      "rank": 9,
+      "candidate": {
+        "id": 2,
+        "name": "Hermione G.",
+        "experience_years": 4.0,
+        "availability": "two_weeks",
+        "quirk": "Reads the entire documentation before writing a single line of code."
+      },
+      "score": 25.0,
+      "skill_coverage": 0.0,
+      "matched_required_skill_count": 0,
+      "required_skill_count": 3,
+      "components": {
+        "skills": {
+          "score": 0.0,
+          "weight_applied": 0.6,
+          "matched": [],
+          "missing": [
+            "deduction",
+            "forensics",
+            "pattern-recognition"
+          ]
+        },
+        "experience": {
+          "score": 100.0,
+          "weight_applied": 0.25,
+          "candidate_years": 4.0,
+          "required_years": 3.0,
+          "meets_minimum": true
+        },
+        "culture": {
+          "status": "scored",
+          "score": 0.0,
+          "weight_applied": 0.15,
+          "matched": [],
+          "missing": [
+            "analytical",
+            "autonomous"
+          ]
+        }
+      },
+      "explanation": "Has none of the 3 required skills (missing deduction, forensics, pattern-recognition); 4 yrs meets the 3-yr minimum; matches none of the 2 culture keywords."
+    },
+    {
+      "rank": 10,
+      "candidate": {
+        "id": 8,
+        "name": "MacGyver",
+        "experience_years": 10.0,
+        "availability": "two_weeks",
+        "quirk": "Fixes production outages with duct tape and a paperclip metaphor."
+      },
+      "score": 25.0,
+      "skill_coverage": 0.0,
+      "matched_required_skill_count": 0,
+      "required_skill_count": 3,
+      "components": {
+        "skills": {
+          "score": 0.0,
+          "weight_applied": 0.6,
+          "matched": [],
+          "missing": [
+            "deduction",
+            "forensics",
+            "pattern-recognition"
+          ]
+        },
+        "experience": {
+          "score": 100.0,
+          "weight_applied": 0.25,
+          "candidate_years": 10.0,
+          "required_years": 3.0,
+          "meets_minimum": true
+        },
+        "culture": {
+          "status": "scored",
+          "score": 0.0,
+          "weight_applied": 0.15,
+          "matched": [],
+          "missing": [
+            "analytical",
+            "autonomous"
+          ]
+        }
+      },
+      "explanation": "Has none of the 3 required skills (missing deduction, forensics, pattern-recognition); 10 yrs meets the 3-yr minimum; matches none of the 2 culture keywords."
+    },
+    {
+      "rank": 11,
+      "candidate": {
+        "id": 12,
+        "name": "Olivia P.",
+        "experience_years": 13.0,
+        "availability": "two_weeks",
+        "quirk": "Handles it. Whatever it is."
+      },
+      "score": 25.0,
+      "skill_coverage": 0.0,
+      "matched_required_skill_count": 0,
+      "required_skill_count": 3,
+      "components": {
+        "skills": {
+          "score": 0.0,
+          "weight_applied": 0.6,
+          "matched": [],
+          "missing": [
+            "deduction",
+            "forensics",
+            "pattern-recognition"
+          ]
+        },
+        "experience": {
+          "score": 100.0,
+          "weight_applied": 0.25,
+          "candidate_years": 13.0,
+          "required_years": 3.0,
+          "meets_minimum": true
+        },
+        "culture": {
+          "status": "scored",
+          "score": 0.0,
+          "weight_applied": 0.15,
+          "matched": [],
+          "missing": [
+            "analytical",
+            "autonomous"
+          ]
+        }
+      },
+      "explanation": "Has none of the 3 required skills (missing deduction, forensics, pattern-recognition); 13 yrs meets the 3-yr minimum; matches none of the 2 culture keywords."
+    },
+    {
+      "rank": 12,
+      "candidate": {
+        "id": 3,
+        "name": "Tony S.",
+        "experience_years": 12.0,
+        "availability": "not_looking",
+        "quirk": "Ships an MVP overnight, refuses to write tests."
+      },
+      "score": 25.0,
+      "skill_coverage": 0.0,
+      "matched_required_skill_count": 0,
+      "required_skill_count": 3,
+      "components": {
+        "skills": {
+          "score": 0.0,
+          "weight_applied": 0.6,
+          "matched": [],
+          "missing": [
+            "deduction",
+            "forensics",
+            "pattern-recognition"
+          ]
+        },
+        "experience": {
+          "score": 100.0,
+          "weight_applied": 0.25,
+          "candidate_years": 12.0,
+          "required_years": 3.0,
+          "meets_minimum": true
+        },
+        "culture": {
+          "status": "scored",
+          "score": 0.0,
+          "weight_applied": 0.15,
+          "matched": [],
+          "missing": [
+            "analytical",
+            "autonomous"
+          ]
+        }
+      },
+      "explanation": "Has none of the 3 required skills (missing deduction, forensics, pattern-recognition); 12 yrs meets the 3-yr minimum; matches none of the 2 culture keywords."
+    },
+    {
+      "rank": 13,
+      "candidate": {
+        "id": 5,
+        "name": "Ron S.",
+        "experience_years": 15.0,
+        "availability": "not_looking",
+        "quirk": "Refuses to use more than one monitor."
+      },
+      "score": 25.0,
+      "skill_coverage": 0.0,
+      "matched_required_skill_count": 0,
+      "required_skill_count": 3,
+      "components": {
+        "skills": {
+          "score": 0.0,
+          "weight_applied": 0.6,
+          "matched": [],
+          "missing": [
+            "deduction",
+            "forensics",
+            "pattern-recognition"
+          ]
+        },
+        "experience": {
+          "score": 100.0,
+          "weight_applied": 0.25,
+          "candidate_years": 15.0,
+          "required_years": 3.0,
+          "meets_minimum": true
+        },
+        "culture": {
+          "status": "scored",
+          "score": 0.0,
+          "weight_applied": 0.15,
+          "matched": [],
+          "missing": [
+            "analytical",
+            "autonomous"
+          ]
+        }
+      },
+      "explanation": "Has none of the 3 required skills (missing deduction, forensics, pattern-recognition); 15 yrs meets the 3-yr minimum; matches none of the 2 culture keywords."
+    },
+    {
+      "rank": 14,
+      "candidate": {
+        "id": 11,
+        "name": "Michael S.",
+        "experience_years": 11.0,
+        "availability": "not_looking",
+        "quirk": "World's best boss, according to a mug he bought himself."
+      },
+      "score": 25.0,
+      "skill_coverage": 0.0,
+      "matched_required_skill_count": 0,
+      "required_skill_count": 3,
+      "components": {
+        "skills": {
+          "score": 0.0,
+          "weight_applied": 0.6,
+          "matched": [],
+          "missing": [
+            "deduction",
+            "forensics",
+            "pattern-recognition"
+          ]
+        },
+        "experience": {
+          "score": 100.0,
+          "weight_applied": 0.25,
+          "candidate_years": 11.0,
+          "required_years": 3.0,
+          "meets_minimum": true
+        },
+        "culture": {
+          "status": "scored",
+          "score": 0.0,
+          "weight_applied": 0.15,
+          "matched": [],
+          "missing": [
+            "analytical",
+            "autonomous"
+          ]
+        }
+      },
+      "explanation": "Has none of the 3 required skills (missing deduction, forensics, pattern-recognition); 11 yrs meets the 3-yr minimum; matches none of the 2 culture keywords."
+    },
+    {
+      "rank": 15,
+      "candidate": {
+        "id": 14,
+        "name": "Miranda P.",
+        "experience_years": 18.0,
+        "availability": "not_looking",
+        "quirk": "Reviews every PR personally. Says nothing. Everyone panics."
+      },
+      "score": 25.0,
+      "skill_coverage": 0.0,
+      "matched_required_skill_count": 0,
+      "required_skill_count": 3,
+      "components": {
+        "skills": {
+          "score": 0.0,
+          "weight_applied": 0.6,
+          "matched": [],
+          "missing": [
+            "deduction",
+            "forensics",
+            "pattern-recognition"
+          ]
+        },
+        "experience": {
+          "score": 100.0,
+          "weight_applied": 0.25,
+          "candidate_years": 18.0,
+          "required_years": 3.0,
+          "meets_minimum": true
+        },
+        "culture": {
+          "status": "scored",
+          "score": 0.0,
+          "weight_applied": 0.15,
+          "matched": [],
+          "missing": [
+            "analytical",
+            "autonomous"
+          ]
+        }
+      },
+      "explanation": "Has none of the 3 required skills (missing deduction, forensics, pattern-recognition); 18 yrs meets the 3-yr minimum; matches none of the 2 culture keywords."
+    }
+  ]
+}

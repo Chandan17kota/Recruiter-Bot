@@ -1,0 +1,282 @@
+{
+  "candidate": {
+    "id": 1,
+    "name": "Sherlock H.",
+    "experience_years": 8.0,
+    "availability": "immediate",
+    "quirk": "Solves problems by eliminating the impossible; occasionally insufferable in standups.",
+    "skills": [
+      "deduction",
+      "forensics",
+      "pattern-recognition"
+    ],
+    "traits": [
+      "analytical",
+      "blunt"
+    ]
+  },
+  "filters_applied": {
+    "min_score": 0.0,
+    "min_skill_coverage": 0.0
+  },
+  "total": 6,
+  "matches": [
+    {
+      "rank": 1,
+      "job": {
+        "id": 1,
+        "title": "Backend Detective",
+        "min_experience_years": 3.0,
+        "tagline": "We have a bug. We have no leads. We have you."
+      },
+      "score": 92.5,
+      "skill_coverage": 100.0,
+      "matched_required_skill_count": 3,
+      "required_skill_count": 3,
+      "components": {
+        "skills": {
+          "score": 100.0,
+          "weight_applied": 0.6,
+          "matched": [
+            "deduction",
+            "forensics",
+            "pattern-recognition"
+          ],
+          "missing": []
+        },
+        "experience": {
+          "score": 100.0,
+          "weight_applied": 0.25,
+          "candidate_years": 8.0,
+          "required_years": 3.0,
+          "meets_minimum": true
+        },
+        "culture": {
+          "status": "scored",
+          "score": 50.0,
+          "weight_applied": 0.15,
+          "matched": [
+            "analytical"
+          ],
+          "missing": [
+            "autonomous"
+          ]
+        }
+      },
+      "explanation": "Has all 3 required skills; 8 yrs meets the 3-yr minimum; matches 1 of 2 culture keywords (analytical)."
+    },
+    {
+      "rank": 2,
+      "job": {
+        "id": 2,
+        "title": "Rapid Prototyping Engineer",
+        "min_experience_years": 2.0,
+        "tagline": "Ship first, document never (kidding — please document)."
+      },
+      "score": 25.0,
+      "skill_coverage": 0.0,
+      "matched_required_skill_count": 0,
+      "required_skill_count": 2,
+      "components": {
+        "skills": {
+          "score": 0.0,
+          "weight_applied": 0.6,
+          "matched": [],
+          "missing": [
+            "rapid-prototyping",
+            "systems-design"
+          ]
+        },
+        "experience": {
+          "score": 100.0,
+          "weight_applied": 0.25,
+          "candidate_years": 8.0,
+          "required_years": 2.0,
+          "meets_minimum": true
+        },
+        "culture": {
+          "status": "scored",
+          "score": 0.0,
+          "weight_applied": 0.15,
+          "matched": [],
+          "missing": [
+            "fast-paced",
+            "innovative"
+          ]
+        }
+      },
+      "explanation": "Has none of the 2 required skills (missing rapid-prototyping, systems-design); 8 yrs meets the 2-yr minimum; matches none of the 2 culture keywords."
+    },
+    {
+      "rank": 3,
+      "job": {
+        "id": 3,
+        "title": "Developer Relations Lead",
+        "min_experience_years": 2.0,
+        "tagline": "Explain complex things to confused humans, cheerfully."
+      },
+      "score": 25.0,
+      "skill_coverage": 0.0,
+      "matched_required_skill_count": 0,
+      "required_skill_count": 2,
+      "components": {
+        "skills": {
+          "score": 0.0,
+          "weight_applied": 0.6,
+          "matched": [],
+          "missing": [
+            "public-speaking",
+            "research"
+          ]
+        },
+        "experience": {
+          "score": 100.0,
+          "weight_applied": 0.25,
+          "candidate_years": 8.0,
+          "required_years": 2.0,
+          "meets_minimum": true
+        },
+        "culture": {
+          "status": "scored",
+          "score": 0.0,
+          "weight_applied": 0.15,
+          "matched": [],
+          "missing": [
+            "curious",
+            "energetic"
+          ]
+        }
+      },
+      "explanation": "Has none of the 2 required skills (missing public-speaking, research); 8 yrs meets the 2-yr minimum; matches none of the 2 culture keywords."
+    },
+    {
+      "rank": 4,
+      "job": {
+        "id": 4,
+        "title": "Engineering Manager, Chaos Team",
+        "min_experience_years": 5.0,
+        "tagline": "Herd cats. The cats are senior engineers."
+      },
+      "score": 25.0,
+      "skill_coverage": 0.0,
+      "matched_required_skill_count": 0,
+      "required_skill_count": 3,
+      "components": {
+        "skills": {
+          "score": 0.0,
+          "weight_applied": 0.6,
+          "matched": [],
+          "missing": [
+            "leadership",
+            "stakeholder-management",
+            "team-building"
+          ]
+        },
+        "experience": {
+          "score": 100.0,
+          "weight_applied": 0.25,
+          "candidate_years": 8.0,
+          "required_years": 5.0,
+          "meets_minimum": true
+        },
+        "culture": {
+          "status": "scored",
+          "score": 0.0,
+          "weight_applied": 0.15,
+          "matched": [],
+          "missing": [
+            "empathetic",
+            "organized"
+          ]
+        }
+      },
+      "explanation": "Has none of the 3 required skills (missing leadership, stakeholder-management, team-building); 8 yrs meets the 5-yr minimum; matches none of the 2 culture keywords."
+    },
+    {
+      "rank": 5,
+      "job": {
+        "id": 5,
+        "title": "Incident Commander",
+        "min_experience_years": 4.0,
+        "tagline": "3am page. You're the one who picks up."
+      },
+      "score": 25.0,
+      "skill_coverage": 0.0,
+      "matched_required_skill_count": 0,
+      "required_skill_count": 3,
+      "components": {
+        "skills": {
+          "score": 0.0,
+          "weight_applied": 0.6,
+          "matched": [],
+          "missing": [
+            "crisis-management",
+            "negotiation",
+            "strategy"
+          ]
+        },
+        "experience": {
+          "score": 100.0,
+          "weight_applied": 0.25,
+          "candidate_years": 8.0,
+          "required_years": 4.0,
+          "meets_minimum": true
+        },
+        "culture": {
+          "status": "scored",
+          "score": 0.0,
+          "weight_applied": 0.15,
+          "matched": [],
+          "missing": [
+            "calm-under-pressure",
+            "decisive"
+          ]
+        }
+      },
+      "explanation": "Has none of the 3 required skills (missing crisis-management, negotiation, strategy); 8 yrs meets the 4-yr minimum; matches none of the 2 culture keywords."
+    },
+    {
+      "rank": 6,
+      "job": {
+        "id": 6,
+        "title": "Sales Engineer",
+        "min_experience_years": 3.0,
+        "tagline": "Sell the vision, then go build it."
+      },
+      "score": 25.0,
+      "skill_coverage": 0.0,
+      "matched_required_skill_count": 0,
+      "required_skill_count": 3,
+      "components": {
+        "skills": {
+          "score": 0.0,
+          "weight_applied": 0.6,
+          "matched": [],
+          "missing": [
+            "negotiation",
+            "public-speaking",
+            "sales"
+          ]
+        },
+        "experience": {
+          "score": 100.0,
+          "weight_applied": 0.25,
+          "candidate_years": 8.0,
+          "required_years": 3.0,
+          "meets_minimum": true
+        },
+        "culture": {
+          "status": "scored",
+          "score": 0.0,
+          "weight_applied": 0.15,
+          "matched": [],
+          "missing": [
+            "enthusiastic",
+            "persistent"
+          ]
+        }
+      },
+      "explanation": "Has none of the 3 required skills (missing negotiation, public-speaking, sales); 8 yrs meets the 3-yr minimum; matches none of the 2 culture keywords."
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "total": 6,
+  "jobs": [
+    {
+      "id": 1,
+      "title": "Backend Detective",
+      "min_experience_years": 3.0,
+      "required_skills": [
+        "deduction",
+        "forensics",
+        "pattern-recognition"
+      ],
+      "culture_keywords": [
+        "analytical",
+        "autonomous"
+      ],
+      "tagline": "We have a bug. We have no leads. We have you."
+    },
+    {
+      "id": 2,
+      "title": "Rapid Prototyping Engineer",
+      "min_experience_years": 2.0,
+      "required_skills": [
+        "rapid-prototyping",
+        "systems-design"
+      ],
+      "culture_keywords": [
+        "fast-paced",
+        "innovative"
+      ],
+      "tagline": "Ship first, document never (kidding — please document)."
+    },
+    {
+      "id": 3,
+      "title": "Developer Relations Lead",
+      "min_experience_years": 2.0,
+      "required_skills": [
+        "public-speaking",
+        "research"
+      ],
+      "culture_keywords": [
+        "curious",
+        "energetic"
+      ],
+      "tagline": "Explain complex things to confused humans, cheerfully."
+    },
+    {
+      "id": 4,
+      "title": "Engineering Manager, Chaos Team",
+      "min_experience_years": 5.0,
+      "required_skills": [
+        "leadership",
+        "stakeholder-management",
+        "team-building"
+      ],
+      "culture_keywords": [
+        "empathetic",
+        "organized"
+      ],
+      "tagline": "Herd cats. The cats are senior engineers."
+    },
+    {
+      "id": 5,
+      "title": "Incident Commander",
+      "min_experience_years": 4.0,
+      "required_skills": [
+        "crisis-management",
+        "negotiation",
+        "strategy"
+      ],
+      "culture_keywords": [
+        "calm-under-pressure",
+        "decisive"
+      ],
+      "tagline": "3am page. You're the one who picks up."
+    },
+    {
+      "id": 6,
+      "title": "Sales Engineer",
+      "min_experience_years": 3.0,
+      "required_skills": [
+        "negotiation",
+        "public-speaking",
+        "sales"
+      ],
+      "culture_keywords": [
+        "enthusiastic",
+        "persistent"
+      ],
+      "tagline": "Sell the vision, then go build it."
+    }
+  ]
+}

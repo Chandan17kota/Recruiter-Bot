@@ -8,6 +8,7 @@ A backend service that stores candidates and job openings in PostgreSQL and rank
 - Optional filters: `min_score`, `min_skill_coverage`, and a repeatable `availability` (job endpoint only).
 - Every error uses the same JSON envelope.
 - The repo also contains `sql_detective.sql` (Part 2).
+- **v2:** a read-only React frontend in `frontend/`, plus `GET /jobs`, `GET /candidates` and `GET /health` to support it (see [Frontend](#frontend-v2)). The backend-only submission is tagged `v1.0.0`.
 
 **Stack:** Python 3.11+, FastAPI, PostgreSQL 14+, psycopg 3 with psycopg_pool, pytest.
 
@@ -121,6 +122,9 @@ curl "localhost:8000/jobs/1/matches?min_skill_coverage=50&availability=immediate
 curl "localhost:8000/jobs/6/matches?availability=immediate&availability=two_weeks&min_score=40"
 curl localhost:8000/candidates/1/matches
 curl -i localhost:8000/jobs/999/matches          # 404 JOB_NOT_FOUND
+curl localhost:8000/jobs                         # v2: all jobs
+curl "localhost:8000/candidates?availability=immediate"   # v2: candidates, optional availability filter
+curl -i localhost:8000/health                    # v2: 200 ok, or 503 when the database is down
 curl -i "localhost:8000/jobs/1/matches?min_score=150"   # 422 VALIDATION_ERROR
 ```
 
@@ -310,6 +314,8 @@ python -m pytest -q
 
 - **Integration tests (real Postgres):** seed idempotency; DB constraints; both endpoints' full schema; filters; empty results; both directions agreeing; deterministic bodies; every 404/405/422; 503 when the DB is unreachable (both a real unreachable DB and a mocked failure); 500s that never leak DB text; a real `statement_timeout` cancellation; hostile input rejected with the tables intact.
   They are skipped when the dedicated `TEST_DATABASE_URL` is unset or PostgreSQL is unreachable.
+- **v2 endpoint tests:** full shapes of `/jobs` and `/candidates` (and that they agree with the headers of the match endpoints), the availability filter, 405/422/503 cases, `/health` both healthy and degraded, and CORS allowing only configured origins and only `GET`.
+- **OpenAPI snapshot:** fails if `frontend/openapi.json` no longer matches the API, so the frontend's generated types can't drift.
 
 ---
 
@@ -341,8 +347,90 @@ data/seed.json          transcribed seed
 scripts/init_db.py      transactional, idempotent schema + seed loader
 sql/detective_data.sql  Part 2 dataset (as given)
 sql_detective.sql       Part 2 answers
+scripts/export_openapi.py  writes frontend/openapi.json (no DB needed)
 tests/unit, tests/integration
+frontend/               v2 React app (see below)
 ```
+
+---
+
+## Frontend (v2)
+
+A read-only React app for browsing candidates and jobs and seeing why each match scored as it did.
+It only displays what the API returns: scores, ranks, breakdowns and filtering all come from FastAPI,
+and the frontend never computes or re-sorts them.
+
+**Stack:** Vite, React 19, TypeScript, React Router, TanStack Query, Tailwind CSS; Vitest, React Testing Library and MSW for tests.
+
+### Run it
+
+With the backend running on port 8000 (`python -m uvicorn app.main:app`):
+
+```bash
+cd frontend
+npm install
+npm run dev          # http://localhost:5173
+```
+
+The Vite dev server proxies `/api/*` to `http://localhost:8000`, so no CORS setup is needed in
+development. To serve the frontend from another origin, set `VITE_API_BASE_URL` (see
+`frontend/.env.example`) and add that origin to the backend's `CORS_ORIGINS`.
+
+### Pages
+
+| Route | Shows |
+|---|---|
+| `/jobs` | every job, with required skills and minimum experience |
+| `/jobs/:id` | candidates ranked for the job, with score, coverage, explanation and an expandable breakdown |
+| `/candidates` | every candidate, filterable by availability |
+| `/candidates/:id` | jobs ranked for the candidate, using the same row and breakdown components |
+| `/about` | how scoring, culture rescaling and tie-breaks work |
+
+**Filters live in the URL** (`?min_score=50&min_skill_coverage=50&availability=immediate`) using the
+API's own parameter names, so any filtered view can be bookmarked or shared. Invalid values in a
+hand-edited URL fall back to the defaults. Sliders update the URL once the user pauses dragging.
+
+**Shared components:** both match pages use the same `MatchFilters`, `MatchResults` (loading, error,
+empty and refreshing states), `MatchList`/`MatchRow` and `ScoreBreakdown`. Errors are read from the
+API's error envelope, so a 404 shows the API's message, and a 503 or an unreachable server shows a
+"service unavailable" message. A banner, driven by `GET /health`, appears when the database is down.
+
+### API types
+
+TypeScript types are generated from FastAPI's OpenAPI schema, not written by hand:
+
+```bash
+python -m scripts.export_openapi      # from the repo root: writes frontend/openapi.json
+cd frontend && npm run gen:api        # writes src/api/schema.d.ts
+```
+
+A backend test fails if `frontend/openapi.json` is out of date. The response models declare
+availability and culture status as fixed sets of values, so the generated types are exact unions.
+
+### Tests
+
+```bash
+cd frontend
+npm test             # Vitest
+npm run typecheck
+npm run build
+```
+
+The tests render the real routes against MSW handlers that serve responses captured from the
+running backend. They cover: rows rendered in API order with scores exactly as returned (including a
+deliberately inconsistent score, to prove the app never recalculates); tie markers; filters read from
+and written to the URL and sent to the API; invalid URL values ignored; breakdown weights, including
+the culture-rescaled case; empty, 404 and 503 states; malformed ids; the list pages; and the health banner.
+
+### Frontend design notes
+
+- **Read-only by design.** Ingestion stays with the seed script; there are no create or edit forms.
+- **Tie markers are a display hint.** Rows with identical returned scores are labelled
+  "Tie with #n" and link to the tie-break rules. The app doesn't work out *why* they're in that
+  order, since that would mean reimplementing the backend's ranking.
+- **TypeScript 5.9 is pinned** because `openapi-typescript` needs the TypeScript 5 compiler API,
+  which the TypeScript 7 rewrite doesn't provide.
+
 
 ---
 
