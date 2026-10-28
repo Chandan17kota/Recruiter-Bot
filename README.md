@@ -385,6 +385,25 @@ development. To serve the frontend from another origin, set `VITE_API_BASE_URL` 
 | `/candidates` | every candidate, filterable by availability |
 | `/candidates/:id` | jobs ranked for the candidate, using the same row and breakdown components |
 | `/about` | how scoring, culture rescaling and tie-breaks work |
+| `/tests` | results of the last backend test run, grouped by file, with failure messages |
+
+### Backend test results page
+
+The `/tests` page **displays** saved results; it cannot start a test run. Running tests from a web
+page would let any visitor execute code on the server, and the integration tests drop and recreate
+tables in the test database. Instead, run the suite yourself and save a report:
+
+```bash
+python -m scripts.test_report     # from the repo root; runs pytest, writes frontend/public/test-report.json
+```
+
+The script runs pytest with a JUnit XML report and converts it to JSON: totals, run time, Python
+version, the git commit, and every test grouped by file with its status, duration and any failure
+message. The report is written even when tests fail, and the exit code is pytest's. If the run
+included uncommitted changes, the commit is marked `-dirty` and the page warns about it. The
+page's status filter and search are kept in the URL (`/tests?status=problems&q=golden`).
+
+The committed report is from the last run before the most recent commit. Regenerate it after changing code.
 
 **Filters live in the URL** (`?min_score=50&min_skill_coverage=50&availability=immediate`) using the
 API's own parameter names, so any filtered view can be bookmarked or shared. Invalid values in a

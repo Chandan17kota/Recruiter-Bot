@@ -30,6 +30,7 @@ export function Layout() {
           <NavLink to="/jobs" className={linkClass}>Jobs</NavLink>
           <NavLink to="/candidates" className={linkClass}>Candidates</NavLink>
           <NavLink to="/about" className={linkClass}>How scoring works</NavLink>
+          <NavLink to="/tests" className={linkClass}>Tests</NavLink>
         </nav>
       </header>
       <main className="mx-auto max-w-5xl space-y-6 px-4 py-6">

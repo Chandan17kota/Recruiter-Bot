@@ -1,0 +1,29 @@
+{
+  "generated_at": "2026-10-28T08:00:00+00:00",
+  "git_commit": "abc1234",
+  "python_version": "3.13.0",
+  "pytest_exit_code": 1,
+  "duration_s": 12.5,
+  "summary": {"total": 5, "passed": 2, "failed": 1, "error": 1, "skipped": 1},
+  "files": [
+    {
+      "path": "tests/integration/test_api.py",
+      "counts": {"passed": 1, "failed": 1, "error": 0, "skipped": 1},
+      "duration_s": 1.2,
+      "tests": [
+        {"name": "test_golden_via_api", "status": "passed", "duration_s": 0.4, "message": null},
+        {"name": "test_min_score_filter", "status": "failed", "duration_s": 0.8, "message": "E   assert 44.99 >= 45"},
+        {"name": "test_statement_timeout_is_applied", "status": "skipped", "duration_s": 0, "message": "Postgres not reachable"}
+      ]
+    },
+    {
+      "path": "tests/unit/test_scoring.py",
+      "counts": {"passed": 1, "failed": 0, "error": 1, "skipped": 0},
+      "duration_s": 0.02,
+      "tests": [
+        {"name": "test_skill_score[have0-req0-100]", "status": "passed", "duration_s": 0.001, "message": null},
+        {"name": "test_weights_validation", "status": "error", "duration_s": 0.01, "message": "fixture 'env' not found"}
+      ]
+    }
+  ]
+}

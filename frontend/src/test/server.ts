@@ -8,10 +8,11 @@ import candidates from "./fixtures/candidates.json";
 import job1 from "./fixtures/job-1-matches.json";
 import job2 from "./fixtures/job-2-matches.json";
 import jobs from "./fixtures/jobs.json";
+import testReport from "./fixtures/test-report.json";
 
 export const API = "http://api.test";
 
-export const fixtures = { jobs, candidates, job1, job2, candidate1 };
+export const fixtures = { jobs, candidates, job1, job2, candidate1, testReport };
 
 export const envelope = (status: number, code: string, message: string) =>
   HttpResponse.json({ error: { code, message, details: null } }, { status });
@@ -20,6 +21,8 @@ export const envelope = (status: number, code: string, message: string) =>
 export const requests: URL[] = [];
 
 export const server = setupServer(
+  // Static file served by Vite from frontend/public, not an API route.
+  http.get("*/test-report.json", () => HttpResponse.json(testReport)),
   http.get(`${API}/health`, () => HttpResponse.json({ status: "ok", database: "ok" })),
   http.get(`${API}/jobs`, () => HttpResponse.json(jobs)),
   http.get(`${API}/candidates`, () => HttpResponse.json(candidates)),

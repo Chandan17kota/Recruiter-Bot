@@ -7,6 +7,7 @@ import { CandidatesPage } from "./pages/CandidatesPage";
 import { JobMatchesPage } from "./pages/JobMatchesPage";
 import { JobsPage } from "./pages/JobsPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
+import { TestsPage } from "./pages/TestsPage";
 
 export const routes: RouteObject[] = [
   {
@@ -18,6 +19,7 @@ export const routes: RouteObject[] = [
       { path: "candidates", element: <CandidatesPage /> },
       { path: "candidates/:id", element: <CandidateMatchesPage /> },
       { path: "about", element: <AboutPage /> },
+      { path: "tests", element: <TestsPage /> },
       { path: "*", element: <NotFoundPage /> },
     ],
   },
