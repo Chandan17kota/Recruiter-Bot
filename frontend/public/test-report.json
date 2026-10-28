@@ -1,0 +1,940 @@
+{
+  "generated_at": "2026-10-28T08:14:20+00:00",
+  "git_commit": "b5bcba3",
+  "python_version": "3.13.0",
+  "pytest_exit_code": 0,
+  "summary": {
+    "total": 138,
+    "passed": 138,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+  },
+  "duration_s": 27.44,
+  "files": [
+    {
+      "path": "tests/integration/test_api.py",
+      "counts": {
+        "passed": 35,
+        "failed": 0,
+        "error": 0,
+        "skipped": 0
+      },
+      "duration_s": 12.98,
+      "tests": [
+        {
+          "name": "test_seed_loaded_and_idempotent",
+          "status": "passed",
+          "duration_s": 0.627,
+          "message": null
+        },
+        {
+          "name": "test_invalid_seed_does_not_change_database",
+          "status": "passed",
+          "duration_s": 0.121,
+          "message": null
+        },
+        {
+          "name": "test_seed_ids_follow_pdf_order",
+          "status": "passed",
+          "duration_s": 0.047,
+          "message": null
+        },
+        {
+          "name": "test_db_constraints_reject_bad_rows",
+          "status": "passed",
+          "duration_s": 0.046,
+          "message": null
+        },
+        {
+          "name": "test_job_matches_full_shape",
+          "status": "passed",
+          "duration_s": 0.074,
+          "message": null
+        },
+        {
+          "name": "test_golden_via_api",
+          "status": "passed",
+          "duration_s": 0.027,
+          "message": null
+        },
+        {
+          "name": "test_availability_filter",
+          "status": "passed",
+          "duration_s": 0.009,
+          "message": null
+        },
+        {
+          "name": "test_min_score_filter",
+          "status": "passed",
+          "duration_s": 0.004,
+          "message": null
+        },
+        {
+          "name": "test_min_skill_coverage_filter",
+          "status": "passed",
+          "duration_s": 0.013,
+          "message": null
+        },
+        {
+          "name": "test_empty_result_is_200",
+          "status": "passed",
+          "duration_s": 0.005,
+          "message": null
+        },
+        {
+          "name": "test_candidate_matches",
+          "status": "passed",
+          "duration_s": 0.007,
+          "message": null
+        },
+        {
+          "name": "test_both_directions_agree",
+          "status": "passed",
+          "duration_s": 0.009,
+          "message": null
+        },
+        {
+          "name": "test_identical_calls_identical_bodies",
+          "status": "passed",
+          "duration_s": 0.01,
+          "message": null
+        },
+        {
+          "name": "test_error_envelope[/jobs/999/matches-404-JOB_NOT_FOUND]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_error_envelope[/candidates/999/matches-404-CANDIDATE_NOT_FOUND]",
+          "status": "passed",
+          "duration_s": 0.004,
+          "message": null
+        },
+        {
+          "name": "test_error_envelope[/jobs/abc/matches-422-VALIDATION_ERROR]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_error_envelope[/jobs/0/matches-422-VALIDATION_ERROR]",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        },
+        {
+          "name": "test_error_envelope[/jobs/1/matches?min_score=150-422-VALIDATION_ERROR]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_error_envelope[/jobs/1/matches?min_score=-1-422-VALIDATION_ERROR]",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        },
+        {
+          "name": "test_error_envelope[/jobs/1/matches?min_skill_coverage=abc-422-VALIDATION_ERROR]",
+          "status": "passed",
+          "duration_s": 0.004,
+          "message": null
+        },
+        {
+          "name": "test_error_envelope[/jobs/1/matches?min_score=NaN-422-VALIDATION_ERROR]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_error_envelope[/jobs/1/matches?availability=soon-422-VALIDATION_ERROR]",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        },
+        {
+          "name": "test_error_envelope[/jobs/99999999999/matches-422-VALIDATION_ERROR]",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        },
+        {
+          "name": "test_error_envelope[/does-not-exist-404-ROUTE_NOT_FOUND]",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        },
+        {
+          "name": "test_validation_details_name_fields",
+          "status": "passed",
+          "duration_s": 0.008,
+          "message": null
+        },
+        {
+          "name": "test_method_not_allowed",
+          "status": "passed",
+          "duration_s": 0.007,
+          "message": null
+        },
+        {
+          "name": "test_db_failure_returns_503",
+          "status": "passed",
+          "duration_s": 0.01,
+          "message": null
+        },
+        {
+          "name": "test_other_db_error_returns_generic_500",
+          "status": "passed",
+          "duration_s": 0.028,
+          "message": null
+        },
+        {
+          "name": "test_unexpected_error_returns_500_envelope",
+          "status": "passed",
+          "duration_s": 0.03,
+          "message": null
+        },
+        {
+          "name": "test_unreachable_database_returns_503",
+          "status": "passed",
+          "duration_s": 11.091,
+          "message": null
+        },
+        {
+          "name": "test_hostile_input_rejected_tables_survive[/jobs/1;DROP TABLE jobs/matches]",
+          "status": "passed",
+          "duration_s": 0.116,
+          "message": null
+        },
+        {
+          "name": "test_hostile_input_rejected_tables_survive[/jobs/1%20OR%201=1/matches]",
+          "status": "passed",
+          "duration_s": 0.119,
+          "message": null
+        },
+        {
+          "name": "test_hostile_input_rejected_tables_survive[/jobs/1/matches?availability=immediate';DROP TABLE candidates;--]",
+          "status": "passed",
+          "duration_s": 0.127,
+          "message": null
+        },
+        {
+          "name": "test_hostile_input_rejected_tables_survive[/jobs/1/matches?min_score=1;DELETE FROM jobs]",
+          "status": "passed",
+          "duration_s": 0.129,
+          "message": null
+        },
+        {
+          "name": "test_statement_timeout_is_applied",
+          "status": "passed",
+          "duration_s": 0.286,
+          "message": null
+        }
+      ]
+    },
+    {
+      "path": "tests/integration/test_browse.py",
+      "counts": {
+        "passed": 19,
+        "failed": 0,
+        "error": 0,
+        "skipped": 0
+      },
+      "duration_s": 12.744,
+      "tests": [
+        {
+          "name": "test_list_jobs_full_shape",
+          "status": "passed",
+          "duration_s": 0.838,
+          "message": null
+        },
+        {
+          "name": "test_list_jobs_matches_job_header_of_matches_endpoint",
+          "status": "passed",
+          "duration_s": 0.176,
+          "message": null
+        },
+        {
+          "name": "test_list_candidates_full_shape",
+          "status": "passed",
+          "duration_s": 0.024,
+          "message": null
+        },
+        {
+          "name": "test_list_candidates_matches_candidate_header_of_matches_endpoint",
+          "status": "passed",
+          "duration_s": 0.297,
+          "message": null
+        },
+        {
+          "name": "test_list_candidates_availability_filter[availability=not_looking-4]",
+          "status": "passed",
+          "duration_s": 0.016,
+          "message": null
+        },
+        {
+          "name": "test_list_candidates_availability_filter[availability=two_weeks-3]",
+          "status": "passed",
+          "duration_s": 0.017,
+          "message": null
+        },
+        {
+          "name": "test_list_candidates_availability_filter[availability=immediate&availability=two_weeks-11]",
+          "status": "passed",
+          "duration_s": 0.017,
+          "message": null
+        },
+        {
+          "name": "test_list_candidates_availability_filter[availability=unknown-0]",
+          "status": "passed",
+          "duration_s": 0.017,
+          "message": null
+        },
+        {
+          "name": "test_list_candidates_bad_availability_is_422",
+          "status": "passed",
+          "duration_s": 0.014,
+          "message": null
+        },
+        {
+          "name": "test_browse_routes_reject_post[/jobs]",
+          "status": "passed",
+          "duration_s": 0.009,
+          "message": null
+        },
+        {
+          "name": "test_browse_routes_reject_post[/candidates]",
+          "status": "passed",
+          "duration_s": 0.013,
+          "message": null
+        },
+        {
+          "name": "test_browse_routes_reject_post[/health]",
+          "status": "passed",
+          "duration_s": 0.013,
+          "message": null
+        },
+        {
+          "name": "test_browse_db_failure_returns_503[/jobs-jobs_repo-list_jobs]",
+          "status": "passed",
+          "duration_s": 0.01,
+          "message": null
+        },
+        {
+          "name": "test_browse_db_failure_returns_503[/candidates-candidates_repo-list_candidates]",
+          "status": "passed",
+          "duration_s": 0.011,
+          "message": null
+        },
+        {
+          "name": "test_health_ok",
+          "status": "passed",
+          "duration_s": 0.018,
+          "message": null
+        },
+        {
+          "name": "test_health_degraded_when_query_fails",
+          "status": "passed",
+          "duration_s": 0.019,
+          "message": null
+        },
+        {
+          "name": "test_health_degraded_when_database_unreachable",
+          "status": "passed",
+          "duration_s": 11.092,
+          "message": null
+        },
+        {
+          "name": "test_no_cors_headers_by_default",
+          "status": "passed",
+          "duration_s": 0.014,
+          "message": null
+        },
+        {
+          "name": "test_cors_allows_only_configured_origins",
+          "status": "passed",
+          "duration_s": 0.129,
+          "message": null
+        }
+      ]
+    },
+    {
+      "path": "tests/unit/test_config.py",
+      "counts": {
+        "passed": 3,
+        "failed": 0,
+        "error": 0,
+        "skipped": 0
+      },
+      "duration_s": 0.013,
+      "tests": [
+        {
+          "name": "test_cors_origins_default_empty",
+          "status": "passed",
+          "duration_s": 0.006,
+          "message": null
+        },
+        {
+          "name": "test_cors_origins_parsed_and_trimmed",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_cors_wildcard_rejected",
+          "status": "passed",
+          "duration_s": 0.004,
+          "message": null
+        }
+      ]
+    },
+    {
+      "path": "tests/unit/test_errors.py",
+      "counts": {
+        "passed": 1,
+        "failed": 0,
+        "error": 0,
+        "skipped": 0
+      },
+      "duration_s": 0.005,
+      "tests": [
+        {
+          "name": "test_pool_and_statement_timeouts_are_operational_errors",
+          "status": "passed",
+          "duration_s": 0.005,
+          "message": null
+        }
+      ]
+    },
+    {
+      "path": "tests/unit/test_normalize_ranking_seed.py",
+      "counts": {
+        "passed": 45,
+        "failed": 0,
+        "error": 0,
+        "skipped": 0
+      },
+      "duration_s": 0.193,
+      "tests": [
+        {
+          "name": "test_distinct_terms_stay_distinct[Java-JavaScript]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_distinct_terms_stay_distinct[C-C++]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_distinct_terms_stay_distinct[C++-C#]",
+          "status": "passed",
+          "duration_s": 0.004,
+          "message": null
+        },
+        {
+          "name": "test_distinct_terms_stay_distinct[C-C#]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_distinct_terms_stay_distinct[Node.js-NodeJS]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_distinct_terms_stay_distinct[public-speaking-public speaking]",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        },
+        {
+          "name": "test_normalization[ Python -python]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_normalization[.NET-.net]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_normalization[machine   learning-machine learning]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_normalization[C++-c++]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_normalization[\\tRust\\n-rust]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_sherlock_backend_detective",
+          "status": "passed",
+          "duration_s": 0.005,
+          "message": null
+        },
+        {
+          "name": "test_olivia_incident_commander",
+          "status": "passed",
+          "duration_s": 0.005,
+          "message": null
+        },
+        {
+          "name": "test_rick_before_macgyver_on_tie",
+          "status": "passed",
+          "duration_s": 0.005,
+          "message": null
+        },
+        {
+          "name": "test_dwight_before_ron_on_tie",
+          "status": "passed",
+          "duration_s": 0.004,
+          "message": null
+        },
+        {
+          "name": "test_elle_incident_commander",
+          "status": "passed",
+          "duration_s": 0.005,
+          "message": null
+        },
+        {
+          "name": "test_thirteen_at_25_for_backend_detective",
+          "status": "passed",
+          "duration_s": 0.005,
+          "message": null
+        },
+        {
+          "name": "test_culture_ceiling_is_50_on_seed",
+          "status": "passed",
+          "duration_s": 0.011,
+          "message": null
+        },
+        {
+          "name": "test_ranking_deterministic",
+          "status": "passed",
+          "duration_s": 0.007,
+          "message": null
+        },
+        {
+          "name": "test_exact_tie_broken_by_availability",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_tiebreak_levels_in_isolation",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_filters_use_unrounded_score",
+          "status": "passed",
+          "duration_s": 0.005,
+          "message": null
+        },
+        {
+          "name": "test_min_skill_coverage",
+          "status": "passed",
+          "duration_s": 0.007,
+          "message": null
+        },
+        {
+          "name": "test_seed_matches_pdf",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_stakeholder_management_regression",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_seed_rejects_duplicate_term",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_seed_rejects_empty_term",
+          "status": "passed",
+          "duration_s": 0.004,
+          "message": null
+        },
+        {
+          "name": "test_seed_rejects_orphan_required_skill",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_seed_rejects_wrong_entity_counts[candidates]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_seed_rejects_wrong_entity_counts[jobs]",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        },
+        {
+          "name": "test_seed_rejects_values_different_from_assignment[candidates-experience_years-9]",
+          "status": "passed",
+          "duration_s": 0.005,
+          "message": null
+        },
+        {
+          "name": "test_seed_rejects_values_different_from_assignment[candidates-availability-not_looking]",
+          "status": "passed",
+          "duration_s": 0.004,
+          "message": null
+        },
+        {
+          "name": "test_seed_rejects_values_different_from_assignment[candidates-name-Sherlock Holmes]",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        },
+        {
+          "name": "test_seed_rejects_values_different_from_assignment[jobs-min_experience_years-6]",
+          "status": "passed",
+          "duration_s": 0.005,
+          "message": null
+        },
+        {
+          "name": "test_seed_rejects_values_different_from_assignment[jobs-title-Different title]",
+          "status": "passed",
+          "duration_s": 0.005,
+          "message": null
+        },
+        {
+          "name": "test_seed_rejects_missing_required_fields[candidates-quirk]",
+          "status": "passed",
+          "duration_s": 0.004,
+          "message": null
+        },
+        {
+          "name": "test_seed_rejects_missing_required_fields[candidates-skills]",
+          "status": "passed",
+          "duration_s": 0.004,
+          "message": null
+        },
+        {
+          "name": "test_seed_rejects_missing_required_fields[jobs-tagline]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_seed_rejects_missing_required_fields[jobs-culture_keywords]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_seed_rejects_duplicate_entity_slugs",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        },
+        {
+          "name": "test_seed_rejects_malformed_availability_enum",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_seed_rejects_malformed_records",
+          "status": "passed",
+          "duration_s": 0.004,
+          "message": null
+        },
+        {
+          "name": "test_seed_rejects_unknown_slug",
+          "status": "passed",
+          "duration_s": 0.005,
+          "message": null
+        },
+        {
+          "name": "test_seed_validation_happens_before_database_connection",
+          "status": "passed",
+          "duration_s": 0.021,
+          "message": null
+        },
+        {
+          "name": "test_seed_allows_symbolic_terms",
+          "status": "passed",
+          "duration_s": 0.004,
+          "message": null
+        }
+      ]
+    },
+    {
+      "path": "tests/unit/test_openapi_snapshot.py",
+      "counts": {
+        "passed": 1,
+        "failed": 0,
+        "error": 0,
+        "skipped": 0
+      },
+      "duration_s": 0.178,
+      "tests": [
+        {
+          "name": "test_committed_openapi_schema_is_current",
+          "status": "passed",
+          "duration_s": 0.178,
+          "message": null
+        }
+      ]
+    },
+    {
+      "path": "tests/unit/test_scoring.py",
+      "counts": {
+        "passed": 30,
+        "failed": 0,
+        "error": 0,
+        "skipped": 0
+      },
+      "duration_s": 0.079,
+      "tests": [
+        {
+          "name": "test_skill_score[have0-req0-100]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_skill_score[have1-req1-expected1]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_skill_score[have2-req2-0]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_skill_score[have3-req3-100]",
+          "status": "passed",
+          "duration_s": 0.004,
+          "message": null
+        },
+        {
+          "name": "test_skill_score[have4-req4-100]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_no_required_skills_explained",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        },
+        {
+          "name": "test_experience_score[8-3-100]",
+          "status": "passed",
+          "duration_s": 0.005,
+          "message": null
+        },
+        {
+          "name": "test_experience_score[3-3-100]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_experience_score[3-4-75]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_experience_score[0-4-0]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_experience_score[0-0-100]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_experience_score[2.5-5-50]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_below_minimum_flag",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        },
+        {
+          "name": "test_culture_known_empty_scores_zero",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        },
+        {
+          "name": "test_culture_unknown_traits_excluded_and_renormalized",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        },
+        {
+          "name": "test_culture_no_job_keywords_excluded",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        },
+        {
+          "name": "test_renormalized_weights_and_sum",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        },
+        {
+          "name": "test_scored_weights_sum_to_one",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        },
+        {
+          "name": "test_documented_limitation_unknown_beats_known_mismatch",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        },
+        {
+          "name": "test_full_score_formula_exact",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        },
+        {
+          "name": "test_equal_scores_compare_equal",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        },
+        {
+          "name": "test_scores_are_fractions_not_floats",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        },
+        {
+          "name": "test_display_fields_never_change_score",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        },
+        {
+          "name": "test_weights_from_strings_exact",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        },
+        {
+          "name": "test_invalid_weights_rejected[0.5-0.25-0.15]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_invalid_weights_rejected[-0.1-0.95-0.15]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_invalid_weights_rejected[0-0.85-0.15]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_invalid_weights_rejected[0.85-0-0.15]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_invalid_weights_rejected[abc-0.25-0.15]",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_zero_culture_weight_allowed",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        }
+      ]
+    },
+    {
+      "path": "tests/unit/test_test_report.py",
+      "counts": {
+        "passed": 4,
+        "failed": 0,
+        "error": 0,
+        "skipped": 0
+      },
+      "duration_s": 0.012,
+      "tests": [
+        {
+          "name": "test_summary_counts_every_outcome",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_tests_grouped_by_file_sorted",
+          "status": "passed",
+          "duration_s": 0.004,
+          "message": null
+        },
+        {
+          "name": "test_messages_kept_for_problems_only",
+          "status": "passed",
+          "duration_s": 0.003,
+          "message": null
+        },
+        {
+          "name": "test_file_of_strips_class_names",
+          "status": "passed",
+          "duration_s": 0.002,
+          "message": null
+        }
+      ]
+    }
+  ]
+}
