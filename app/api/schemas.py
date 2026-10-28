@@ -192,6 +192,37 @@ def candidate_matches_response(result, filters: CandidateFiltersOut) -> Candidat
                                     total=len(rows), matches=rows)
 
 
+# ---- Browse lists and health --------------------------------------------
+class JobListResponse(BaseModel):
+    total: int
+    jobs: list[JobOut]
+
+
+class CandidateListFiltersOut(BaseModel):
+    availability: Optional[list[str]]
+
+
+class CandidateListResponse(BaseModel):
+    filters_applied: CandidateListFiltersOut
+    total: int
+    candidates: list[CandidateOut]
+
+
+def job_list_response(jobs) -> JobListResponse:
+    rows = [job_out(j) for j in jobs]
+    return JobListResponse(total=len(rows), jobs=rows)
+
+
+def candidate_list_response(candidates, filters: CandidateListFiltersOut) -> CandidateListResponse:
+    rows = [candidate_out(c) for c in candidates]
+    return CandidateListResponse(filters_applied=filters, total=len(rows), candidates=rows)
+
+
+class HealthResponse(BaseModel):
+    status: str      # "ok" | "degraded"
+    database: str    # "ok" | "unavailable"
+
+
 class ErrorBody(BaseModel):
     code: str
     message: str

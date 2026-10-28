@@ -2,15 +2,20 @@
 
 Both directions run the identical pipeline and the same score_pair().
 """
+import logging
 from dataclasses import dataclass
 from decimal import Decimal
 from typing import Optional, Sequence
+
+import psycopg
 
 from app.config import Weights
 from app.domain.models import CandidateProfile, JobProfile, MatchResult
 from app.domain.ranking import filter_and_rank
 from app.domain.scoring import score_pair
-from app.repositories import candidates_repo, jobs_repo
+from app.repositories import candidates_repo, health_repo, jobs_repo
+
+log = logging.getLogger("recruiter_bot")
 
 
 class NotFoundError(Exception):
@@ -36,6 +41,23 @@ class MatchingService:
     def __init__(self, pool, weights: Weights):
         self._pool = pool
         self._weights = weights
+
+    def list_jobs(self) -> list[JobProfile]:
+        with self._pool.connection() as conn:
+            return jobs_repo.list_jobs(conn)
+
+    def list_candidates(self, availabilities: Optional[Sequence[str]] = None) -> list[CandidateProfile]:
+        with self._pool.connection() as conn:
+            return candidates_repo.list_candidates(conn, availabilities)
+
+    def database_ok(self) -> bool:
+        """True if a trivial query succeeds. Never raises for an unreachable DB."""
+        try:
+            with self._pool.connection() as conn:
+                return health_repo.ping(conn)
+        except psycopg.OperationalError as exc:
+            log.warning("Health check: database unavailable: %r", exc)
+            return False
 
     def matches_for_job(self, job_id: int, *, min_score: Decimal = Decimal(0),
                         min_skill_coverage: Decimal = Decimal(0),

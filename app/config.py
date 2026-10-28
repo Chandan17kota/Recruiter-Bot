@@ -48,6 +48,7 @@ class Settings:
     weights: Weights
     statement_timeout_ms: int = 5000
     pool_timeout_s: float = 5.0
+    cors_origins: tuple[str, ...] = ()   # empty = no CORS middleware (the Vite dev proxy needs none)
 
 
 def load_settings(database_url_var: str = "DATABASE_URL") -> Settings:
@@ -66,4 +67,7 @@ def load_settings(database_url_var: str = "DATABASE_URL") -> Settings:
         raise ConfigError("DB_STATEMENT_TIMEOUT_MS must be an integer") from exc
     if timeout <= 0:
         raise ConfigError("DB_STATEMENT_TIMEOUT_MS must be > 0")
-    return Settings(database_url=url, weights=weights, statement_timeout_ms=timeout)
+    origins = tuple(o.strip() for o in os.environ.get("CORS_ORIGINS", "").split(",") if o.strip())
+    if "*" in origins:
+        raise ConfigError("CORS_ORIGINS must list explicit origins, not '*'")
+    return Settings(database_url=url, weights=weights, statement_timeout_ms=timeout, cors_origins=origins)

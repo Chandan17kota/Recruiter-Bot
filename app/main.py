@@ -4,6 +4,7 @@ from contextlib import asynccontextmanager
 from typing import Optional
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.api import errors
 from app.api.routes_matches import router
@@ -33,6 +34,10 @@ def create_app(settings: Optional[Settings] = None) -> FastAPI:
         lifespan=lifespan,
     )
     errors.register(app)
+    if settings.cors_origins:
+        # Read-only API: only GET is needed cross-origin.
+        app.add_middleware(CORSMiddleware, allow_origins=list(settings.cors_origins),
+                           allow_methods=["GET"], allow_headers=["*"])
     app.include_router(router)
     return app
 
