@@ -30,12 +30,17 @@ export function Layout() {
           <NavLink to="/jobs" className={linkClass}>Jobs</NavLink>
           <NavLink to="/candidates" className={linkClass}>Candidates</NavLink>
           <NavLink to="/about" className={linkClass}>How scoring works</NavLink>
-          <NavLink to="/tests" className={linkClass}>Tests</NavLink>
         </nav>
       </header>
       <main className="mx-auto max-w-5xl space-y-6 px-4 py-6">
         <Outlet />
       </main>
+      {/* Developer tooling stays out of the main navigation. */}
+      <footer className="mx-auto max-w-5xl border-t border-slate-200 px-4 py-4 text-xs text-slate-500">
+        <nav aria-label="Developer">
+          Developer: <NavLink to="/tests" className="underline hover:text-slate-700">Test report</NavLink>
+        </nav>
+      </footer>
     </div>
   );
 }

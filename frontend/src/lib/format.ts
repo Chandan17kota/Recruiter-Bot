@@ -28,3 +28,12 @@ export const CULTURE_STATUS_LABEL: Record<CultureStatus, string> = {
   unknown_candidate_traits: "Not scored: candidate traits unknown",
   no_job_keywords: "Not scored: job has no culture keywords",
 };
+
+/** "3 days ago", "5 hours ago", "just now". */
+export function timeAgo(then: Date, now: Date = new Date()): string {
+  const seconds = Math.round((then.getTime() - now.getTime()) / 1000);
+  const units: [Intl.RelativeTimeFormatUnit, number][] = [["day", 86_400], ["hour", 3_600], ["minute", 60]];
+  const fmt = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
+  for (const [unit, size] of units) if (Math.abs(seconds) >= size) return fmt.format(Math.round(seconds / size), unit);
+  return "just now";
+}

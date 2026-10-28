@@ -17,6 +17,8 @@ import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parent.parent
 OUT_PATH = ROOT / "frontend" / "public" / "test-report.json"
 MAX_MESSAGE_CHARS = 2000   # keep the report small; the full output is in the terminal
@@ -64,7 +66,19 @@ def parse_junit(xml_text: str) -> dict:
         out_files.append({"path": path, "counts": file_counts,
                           "duration_s": round(sum(t["duration_s"] for t in tests), 3), "tests": tests})
 
-    suite_times = [float(s.get("time", 0) or 0) for s in root.iter("testsuite")]
+    # Cross-check against pytest's own totals so a parsing mistake can't misreport results.
+    suites = list(root.iter("testsuite"))
+    declared = {
+        "total": sum(int(s.get("tests", 0)) for s in suites),
+        "failed": sum(int(s.get("failures", 0)) for s in suites),
+        "error": sum(int(s.get("errors", 0)) for s in suites),
+        "skipped": sum(int(s.get("skipped", 0)) for s in suites),
+    }
+    parsed = {"total": sum(counts.values()), "failed": counts["failed"], "error": counts["error"], "skipped": counts["skipped"]}
+    if parsed != declared:
+        raise ValueError(f"JUnit totals {declared} disagree with the parsed test cases {parsed}")
+
+    suite_times = [float(s.get("time", 0) or 0) for s in suites]
     return {
         "summary": {"total": sum(counts.values()), **counts},
         "duration_s": round(sum(suite_times), 2),
@@ -99,7 +113,9 @@ def main(argv: list[str]) -> int:
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "git_commit": commit,
+        "generator": "scripts/test_report.py",
         "python_version": platform.python_version(),
+        "pytest_version": pytest.__version__,
         "pytest_exit_code": code,
         **report,
     }

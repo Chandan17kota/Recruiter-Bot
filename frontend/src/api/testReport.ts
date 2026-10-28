@@ -24,7 +24,9 @@ export interface TestFile {
 export interface TestReport {
   generated_at: string;
   git_commit: string | null;
+  generator?: string;
   python_version: string;
+  pytest_version?: string;
   pytest_exit_code: number;
   duration_s: number;
   summary: StatusCounts & { total: number };

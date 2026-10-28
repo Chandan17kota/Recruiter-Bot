@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router";
 
 import { ReportMissingError, useTestReport, type TestCase, type TestReport, type TestStatus } from "../api/testReport";
 import { EmptyState, ErrorState, LoadingList } from "../components/States";
+import { timeAgo } from "../lib/format";
 
 const STATUS_STYLE: Record<TestStatus, { icon: string; label: string; text: string; chip: string }> = {
   passed: { icon: "✓", label: "Passed", text: "text-emerald-700", chip: "bg-emerald-50 text-emerald-800 ring-emerald-600/20" },
@@ -24,14 +25,32 @@ const inView = (t: TestCase, view: View) =>
 
 const formatDuration = (s: number) => (s < 1 ? `${Math.round(s * 1000)} ms` : `${s.toFixed(2)} s`);
 
+/** The report is a saved snapshot, so say so before showing any numbers. */
+function SnapshotNotice({ report }: { report: TestReport }) {
+  const generated = new Date(report.generated_at);
+  return (
+    <section aria-label="Snapshot" className="rounded-xl border border-sky-200 bg-sky-50 p-4 text-sm text-sky-950">
+      <p className="font-semibold">Historical snapshot, not a live status</p>
+      <p className="mt-1">
+        Recorded <time dateTime={report.generated_at} className="font-medium">{generated.toLocaleString()}</time>{" "}
+        ({timeAgo(generated)}) on commit <code className="rounded bg-white/70 px-1 font-mono">{report.git_commit ?? "unknown"}</code>.
+        Code changed after this run is not reflected here.
+      </p>
+      {report.git_commit?.endsWith("-dirty") && (
+        <p className="mt-1 text-amber-800">The run included uncommitted changes, so the commit above doesn't fully describe the code tested.</p>
+      )}
+    </section>
+  );
+}
+
 function Summary({ report }: { report: TestReport }) {
   const { summary } = report;
   const problems = summary.failed + summary.error;
-  const generated = new Date(report.generated_at);
 
   return (
     <section aria-label="Summary" className="space-y-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-      <div className="flex flex-wrap items-center gap-3">
+      <div>
+        <h2 className="text-xs font-medium uppercase tracking-wide text-slate-500">Result of that run</h2>
         <p className={`text-xl font-bold ${problems ? "text-rose-700" : "text-emerald-700"}`}>
           <span aria-hidden="true">{problems ? "✗ " : "✓ "}</span>
           {problems ? `${problems} of ${summary.total} tests failing` : `All ${summary.passed} tests passed`}
@@ -49,14 +68,9 @@ function Summary({ report }: { report: TestReport }) {
         </li>
       </ul>
       <dl className="grid gap-x-6 gap-y-1 text-sm sm:grid-cols-2">
-        <div className="flex gap-2"><dt className="text-slate-500">Run at</dt><dd><time dateTime={report.generated_at}>{generated.toLocaleString()}</time></dd></div>
         <div className="flex gap-2"><dt className="text-slate-500">Duration</dt><dd>{formatDuration(report.duration_s)}</dd></div>
-        <div className="flex gap-2"><dt className="text-slate-500">Commit</dt><dd className="font-mono">{report.git_commit ?? "unknown"}</dd></div>
         <div className="flex gap-2"><dt className="text-slate-500">Python</dt><dd>{report.python_version}</dd></div>
       </dl>
-      {report.git_commit?.endsWith("-dirty") && (
-        <p className="text-xs text-amber-800">The run included uncommitted changes, so the commit above doesn't fully describe the code tested.</p>
-      )}
     </section>
   );
 }
@@ -105,10 +119,10 @@ export function TestsPage() {
   return (
     <>
       <div>
-        <h1 className="text-2xl font-bold">Backend test results</h1>
+        <h1 className="text-2xl font-bold">Backend test report</h1>
         <p className="text-sm text-slate-600">
-          Results from the last run of <code className="rounded bg-slate-100 px-1">python -m scripts.test_report</code>.
-          This page only displays them; it can't start a test run.
+          Saved by <code className="rounded bg-slate-100 px-1">python -m scripts.test_report</code>, which runs pytest and
+          records its results. This page only displays that file; it can't start a test run.
         </p>
       </div>
 
@@ -124,8 +138,10 @@ export function TestsPage() {
         <ErrorState error={error} />
       ) : (
         <>
+          <SnapshotNotice report={data} />
           <Summary report={data} />
 
+          <h2 className="pt-2 text-lg font-semibold">Test details</h2>
           <section aria-label="Filters" className="flex flex-wrap items-end gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
             <fieldset>
               <legend className="text-sm font-medium">Show</legend>

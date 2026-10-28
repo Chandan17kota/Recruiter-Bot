@@ -385,11 +385,12 @@ development. To serve the frontend from another origin, set `VITE_API_BASE_URL` 
 | `/candidates` | every candidate, filterable by availability |
 | `/candidates/:id` | jobs ranked for the candidate, using the same row and breakdown components |
 | `/about` | how scoring, culture rescaling and tie-breaks work |
-| `/tests` | results of the last backend test run, grouped by file, with failure messages |
+| `/tests` | developer page, linked from the footer: the saved backend test report |
 
-### Backend test results page
+### Backend test report page (developer)
 
-The `/tests` page **displays** saved results; it cannot start a test run. Running tests from a web
+The `/tests` page is a developer tool, so it is linked from the page footer ("Developer: Test
+report") rather than the main navigation. It **displays** saved results; it cannot start a test run. Running tests from a web
 page would let any visitor execute code on the server, and the integration tests drop and recreate
 tables in the test database. Instead, run the suite yourself and save a report:
 
@@ -400,10 +401,26 @@ python -m scripts.test_report     # from the repo root; runs pytest, writes fron
 The script runs pytest with a JUnit XML report and converts it to JSON: totals, run time, Python
 version, the git commit, and every test grouped by file with its status, duration and any failure
 message. The report is written even when tests fail, and the exit code is pytest's. If the run
-included uncommitted changes, the commit is marked `-dirty` and the page warns about it. The
-page's status filter and search are kept in the URL (`/tests?status=problems&q=golden`).
+included uncommitted changes, the commit is marked `-dirty` and the page warns about it.
 
-The committed report is from the last run before the most recent commit. Regenerate it after changing code.
+The page opens with a **"Historical snapshot, not a live status"** notice showing when the run
+happened (date and how long ago) and on which commit, before any numbers. The per-file test
+details come after the summary, under their own heading, with a status filter and search kept in
+the URL (`/tests?status=problems&q=golden`).
+
+**Making sure the numbers are real.** The report is only ever written by the script, from
+pytest's own output:
+
+- The script cross-checks its parsed counts against pytest's JUnit totals and refuses to write a
+  report if they disagree.
+- The report records its generator, the pytest and Python versions, and pytest's exit code.
+- Backend tests check the committed report: the totals must equal the individual test entries,
+  each file's counts must match its tests, the exit code must agree with the failure count, and
+  the named commit must exist in the repository. A hand edit that changes a number without
+  regenerating the whole file fails these checks. (They can't prove the file was never edited,
+  only that it is consistent.)
+
+The committed report is a snapshot. Regenerate it after changing code.
 
 **Filters live in the URL** (`?min_score=50&min_skill_coverage=50&availability=immediate`) using the
 API's own parameter names, so any filtered view can be bookmarked or shared. Invalid values in a

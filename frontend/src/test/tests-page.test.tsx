@@ -2,6 +2,7 @@ import { screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { http, HttpResponse } from "msw";
 
+import { timeAgo } from "../lib/format";
 import { renderAt } from "./render";
 import { fixtures, server } from "./server";
 
@@ -11,6 +12,24 @@ const testNames = () =>
   );
 
 describe("tests page", () => {
+  it("is linked from the developer footer, not the main navigation", async () => {
+    renderAt("/jobs");
+    await screen.findByRole("list", { name: "Jobs" });
+    expect(within(screen.getByRole("navigation", { name: "Main" })).queryByRole("link", { name: /test/i })).not.toBeInTheDocument();
+    expect(within(screen.getByRole("navigation", { name: "Developer" })).getByRole("link", { name: "Test report" }))
+      .toHaveAttribute("href", "/tests");
+  });
+
+  it("labels the results as a historical snapshot with time and commit, before the numbers", async () => {
+    renderAt("/tests");
+    const notice = await screen.findByRole("region", { name: "Snapshot" });
+    expect(notice).toHaveTextContent("Historical snapshot, not a live status");
+    expect(notice).toHaveTextContent("abc1234");
+    expect(within(notice).getByText((_, el) => el?.tagName === "TIME")).toHaveAttribute("dateTime", "2026-10-28T08:00:00+00:00");
+    const summary = screen.getByRole("region", { name: "Summary" });
+    expect(notice.compareDocumentPosition(summary) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+
   it("summarises the last run", async () => {
     renderAt("/tests");
     expect(await screen.findByText("2 of 5 tests failing")).toBeInTheDocument();
@@ -19,7 +38,6 @@ describe("tests page", () => {
     expect(counts).toHaveTextContent("Failed: 1");
     expect(counts).toHaveTextContent("Errors: 1");
     expect(counts).toHaveTextContent("Skipped: 1");
-    expect(screen.getByText("abc1234")).toBeInTheDocument();
     expect(screen.getByText("12.50 s")).toBeInTheDocument();
   });
 
@@ -86,4 +104,15 @@ describe("tests page", () => {
     const main = screen.getByRole("main");
     expect(within(main).queryByRole("button", { name: /run/i })).not.toBeInTheDocument();
   });
+});
+
+describe("timeAgo", () => {
+  const now = new Date("2026-10-28T12:00:00Z");
+  it.each([
+    ["2026-10-28T11:59:30Z", "just now"],
+    ["2026-10-28T11:55:00Z", "5 minutes ago"],
+    ["2026-10-28T09:00:00Z", "3 hours ago"],
+    ["2026-10-27T12:00:00Z", "yesterday"],
+    ["2026-10-21T12:00:00Z", "7 days ago"],
+  ])("%s -> %s", (then, expected) => expect(timeAgo(new Date(then), now)).toBe(expected));
 });
